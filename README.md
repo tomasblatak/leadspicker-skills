@@ -26,6 +26,19 @@ Creates AI-powered classification columns (magic columns) using GPT-4o-Mini. Sup
 - Preview-before-launch workflow (test on 5 rows first)
 - Batch classification (multiple columns in one session)
 
+### 3. Personalizer (`leadspicker-personalizer`)
+
+Generates short personalization hooks, icebreakers, salutations, and vocatives for cold email campaigns using GPT-4o-Mini. Outputs sentence fragments (≤16 words) to keep AI hallucination under control.
+
+**Capabilities:**
+- Company-based hooks (from website summary or LinkedIn description)
+- Person-based hooks (from experience, role, or LinkedIn posts)
+- LinkedIn posts icebreakers
+- Multi-language output (English, Czech, German, Polish, and more)
+- Language-specific salutations with proper grammar (e.g., Czech "Dobrý den, pane Nováku")
+- Name vocatives for Slavic languages (first name + last name declension)
+- Batch personalization pipelines (all hooks + salutations in one go)
+
 ## How to Use
 
 ### Prerequisites
@@ -45,9 +58,12 @@ cp leadspicker-data-enrichment/SKILL.md /your-project/SKILL.md
 
 # For AI classification
 cp leadspicker-classifier/SKILL.md /your-project/SKILL.md
+
+# For personalization
+cp leadspicker-personalizer/SKILL.md /your-project/SKILL.md
 ```
 
-Or use both skills by placing them in separate subdirectories within your project.
+Or use multiple skills by placing them in separate subdirectories within your project.
 
 ### Usage
 
@@ -62,6 +78,12 @@ Once the skill is loaded in Claude Code, simply describe what you need in natura
 - "Classify if companies are SaaS platforms"
 - "Filter only Sales Managers from the contacts"
 - "Score how likely each company targets enterprise customers"
+
+**Personalization examples:**
+- "Create a website hook for my contacts"
+- "Generate Czech salutations with proper vocative"
+- "Write icebreakers from LinkedIn posts in German"
+- "Full personalization package in Czech"
 
 The skills will guide you through providing the API key and project ID, then handle the rest automatically.
 
