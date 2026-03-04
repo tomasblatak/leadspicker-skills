@@ -1,6 +1,6 @@
 # Leadspicker Skills for Claude Code
 
-A collection of [Claude Code](https://claude.com/claude-code) skills for automating data enrichment and AI-powered classification in [Leadspicker.com](https://leadspicker.com) projects.
+A collection of [Claude Code](https://claude.com/claude-code) skills for automating data enrichment, AI-powered classification, personalization, and outreach sequence building in [Leadspicker.com](https://leadspicker.com) projects.
 
 ## Skills
 
@@ -39,6 +39,18 @@ Generates short personalization hooks, icebreakers, salutations, and vocatives f
 - Name vocatives for Slavic languages (first name + last name declension)
 - Batch personalization pipelines (all hooks + salutations in one go)
 
+### 4. Outreach (`leadspicker-outreach`)
+
+Creates outreach sequences (email, LinkedIn, or multi-channel) for Leadspicker projects via the Sequence API. Builds sequences step-by-step with automatic step chaining.
+
+**Capabilities:**
+- Email sequences (cold email with follow-ups in the same thread)
+- LinkedIn sequences (connection check → DMs or connection request → messages/InMail)
+- Multi-channel sequences (email first, then LinkedIn with email fallbacks)
+- Conditional branching (already connected vs. not connected, accepted vs. not accepted)
+- InMail support (optional, for LinkedIn Premium users only)
+- Complete API payload templates for all three sequence types
+
 ## How to Use
 
 ### Prerequisites
@@ -61,6 +73,9 @@ cp leadspicker-classifier/SKILL.md /your-project/SKILL.md
 
 # For personalization
 cp leadspicker-personalizer/SKILL.md /your-project/SKILL.md
+
+# For outreach sequences
+cp leadspicker-outreach/SKILL.md /your-project/SKILL.md
 ```
 
 Or use multiple skills by placing them in separate subdirectories within your project.
@@ -84,6 +99,12 @@ Once the skill is loaded in Claude Code, simply describe what you need in natura
 - "Generate Czech salutations with proper vocative"
 - "Write icebreakers from LinkedIn posts in German"
 - "Full personalization package in Czech"
+
+**Outreach examples:**
+- "Create an email sequence with 3 emails and 3-day delays"
+- "Build a LinkedIn outreach sequence with InMail"
+- "Create a multi-channel sequence with email and LinkedIn"
+- "Delete the current sequence and start over"
 
 The skills will guide you through providing the API key and project ID, then handle the rest automatically.
 
