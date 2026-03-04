@@ -87,9 +87,11 @@ a reference to the recipient's company.
 
 #### Website Hook
 
-References what the company does based on their website content.
+References what the company does based on their website content. **Always include
+`{{linkedin_company_description}}` as a fallback** — when website data is empty, LinkedIn
+fills the gap and ensures every contact gets a hook.
 
-**Variables:** `{{company_name}}`, `{{website_text_summary}}`
+**Variables:** `{{company_name}}`, `{{website_text_summary}}`, `{{linkedin_company_description}}`
 **Typical output:** `"I saw your company helps retailers optimize their supply chain"`
 
 #### LinkedIn Company Hook
@@ -167,7 +169,7 @@ Pick only the variables relevant to the personalization type:
 
 | Personalization | Variables | When to use |
 |---|---|---|
-| Website hook | `{{company_name}}`, `{{website_text_summary}}` | User wants hook based on company website |
+| Website hook | `{{company_name}}`, `{{website_text_summary}}`, `{{linkedin_company_description}}` | User wants hook based on company website (LinkedIn as fallback) |
 | LinkedIn company hook | `{{company_name}}`, `{{linkedin_company_description}}` | User wants hook from LinkedIn company page |
 | Combined company hook | `{{company_name}}`, `{{company_website}}`, `{{linkedin_company_description}}`, `{{website_text_summary}}` | User wants the richest company-based hook |
 | Experience hook | `{{full_name}}`, `{{position}}`, `{{linkedin_about_me}}`, `{{present_experiences}}` | User wants hook about the person's background |
@@ -230,13 +232,16 @@ Pick only the variables relevant to the personalization type:
 **Column name:** `Website Hook` or `Website Hook - {LANG}`
 **`is_boolean`: false**
 
+**⚠️ Always include `{{linkedin_company_description}}` alongside `{{website_text_summary}}`.** Some contacts have no website data — LinkedIn fills the gap and ensures every contact gets a hook.
+
 ```
-Write a short personalization sentence for a cold email that references what this company does based on their website.
+Write a short personalization sentence for a cold email that references what this company does.
 
 Rules:
 - Keep your output under 16 words
 - Start with "I saw" or "I noticed" followed by a specific reference to the company's activity
-- Reference something concrete — a product, service, market, or initiative
+- Use the most interesting and specific detail from the available data
+- Reference a product, service, market, technology, or initiative — be concrete
 - Do NOT be generic (no "I see your company is doing great things")
 - Do NOT include a call to action or transition phrase
 - The tone should be natural and conversational, not salesy
@@ -245,6 +250,7 @@ Rules:
 Input:
 - Company Name: {{company_name}}
 - Company Website Summary: {{website_text_summary}}
+- LinkedIn Company Description: {{linkedin_company_description}}
 ```
 
 **For non-English output**, replace the opener with the native-language equivalent and append the language instruction:
